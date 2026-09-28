@@ -73,10 +73,10 @@ export default function Skills() {
                 />
                 <div className="skill-card-info">
                   <h3 className="skill-card-name">{skill.name}</h3>
-                  <span className="skill-card-level">{skill.level}%</span>
+                  {typeof skill.level === "number" && <span className="skill-card-level">{skill.level}%</span>}
                 </div>
               </div>
-              <div className="skill-bar-container">
+              {typeof skill.level === "number" && <div className="skill-bar-container">
                 <motion.div
                   className="skill-bar-progress"
                   initial={{ width: 0 }}
@@ -84,13 +84,13 @@ export default function Skills() {
                   transition={{ duration: 1, delay: 0.2 }}
                   viewport={{ once: true }}
                 />
-              </div>
+              </div>}
               <p className="skill-card-description">{skill.description}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        <motion.div
+        {skills.summary.length > 0 && <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -103,7 +103,7 @@ export default function Skills() {
               <span className="summary-label">{item.label}</span>
             </div>
           ))}
-        </motion.div>
+        </motion.div>}
       </div>
     </section>
   );

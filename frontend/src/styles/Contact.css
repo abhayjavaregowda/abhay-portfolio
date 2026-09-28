@@ -58,6 +58,11 @@
   font-size: 14px;
 }
 
+.contact-info-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .social-links {
   margin-top: 12px;
 }

@@ -99,17 +99,7 @@
   width: 100%;
   max-width: 400px;
   aspect-ratio: 1;
-}
-
-.avatar-container canvas {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 50%;
-  cursor: grab;
-}
-
-.avatar-container canvas:active {
-  cursor: grabbing;
+  isolation: isolate;
 }
 
 .avatar-container::before {
@@ -135,6 +125,7 @@
   animation: rotateBorder 3s linear infinite;
   pointer-events: none;
   filter: blur(0.5px);
+  z-index: 3;
 }
 
 .avatar-container::after {
@@ -145,6 +136,7 @@
   border: 2px dashed rgba(186, 128, 255, 0.2);
   animation: rotateDots 10s linear infinite;
   pointer-events: none;
+  z-index: 3;
 }
 
 .ring-dots {
@@ -154,6 +146,7 @@
   border: 1.5px dashed rgba(186, 128, 255, 0.15);
   animation: rotateDotsReverse 12s linear infinite;
   pointer-events: none;
+  z-index: 3;
 }
 
 .ring-dots-outer {
@@ -163,6 +156,7 @@
   border: 1px dashed rgba(186, 128, 255, 0.1);
   animation: rotateDots 14s linear infinite;
   pointer-events: none;
+  z-index: 3;
 }
 
 .particle-ring {
@@ -170,6 +164,7 @@
   inset: -20px;
   border-radius: 50%;
   pointer-events: none;
+  z-index: 4;
 }
 
 .particle-ring .dot {
@@ -329,6 +324,33 @@
   position: relative;
 }
 
+.avatar-initials-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.avatar-initials-placeholder span {
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(186, 128, 255, 0.45);
+  border-radius: 50%;
+  background: rgba(186, 128, 255, 0.12);
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.avatar-initials-placeholder small {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
 .placeholder-icon {
   font-size: 80px;
   animation: floatIcon 3s ease-in-out infinite;
@@ -356,6 +378,7 @@
   filter: blur(40px);
   animation: pulseGlow 3s ease-in-out infinite;
   pointer-events: none;
+  z-index: -1;
 }
 
 @keyframes pulseGlow {
@@ -893,17 +916,18 @@
 }
 
 .avatar-static-img {
-  width: 85%;
-  height: 85%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: 48% 30%;
   border-radius: 50%;
-  border: 2px solid rgba(186, 128, 255, 0.3);
+  border: 3px solid rgba(186, 128, 255, 0.42);
   box-shadow:
-    0 0 30px rgba(186, 128, 255, 0.2),
-    0 0 60px rgba(186, 128, 255, 0.1);
+    0 0 32px rgba(186, 128, 255, 0.28),
+    0 0 72px rgba(186, 128, 255, 0.16);
   transition: all 0.4s ease;
   position: relative;
-  z-index: 5;
+  z-index: 2;
 }
 
 .avatar-static-img:hover {
